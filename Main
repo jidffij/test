@@ -1,0 +1,184 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "RECON V1", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+--[[
+Name = <string> - The name of the UI.
+HidePremium = <bool> - Whether or not the user details shows Premium status or not.
+SaveConfig = <bool> - Toggles the config saving in the UI.
+ConfigFolder = <string> - The name of the folder where the configs are saved.
+IntroEnabled = <bool> - Whether or not to show the intro animation.
+IntroText = <string> - Text to show in the intro animation.
+IntroIcon = <string> - URL to the image you want to use in the intro animation.
+Icon = <string> - URL to the image you want displayed on the window.
+CloseCallback = <function> - Function to execute when the window is closed.
+]]
+
+local Tab = Window:MakeTab({
+	Name = "hubs",
+	Icon = "nil",
+	PremiumOnly = false
+})
+
+--[[
+Name = <string> - The name of the tab.
+Icon = <string> - The icon of the tab.
+PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
+]]
+local Section = Tab:AddSection({
+	Name = "main"
+})
+
+--[[
+Name = <string> - The name of the section.
+]]
+OrionLib:MakeNotification({
+	Name = "Loaded",
+	Content = "Notification content... what will it say??",
+	Image = "nil",
+	Time = 5
+})
+
+--[[
+Title = <string> - The title of the notification.
+Content = <string> - The content of the notification.
+Image = <string> - The icon of the notification.
+Time = <number> - The duration of the notfication.
+]]
+Tab:AddButton({
+	Name = "Unixhub v1.5",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/unixetp/unixhub/refs/heads/main/script"))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+Tab:AddButton({
+	Name = "Tamhub",
+	Callback = function()
+      		loadstring(game:HttpGet"https://raw.githubusercontent.com/tamarixr/tamhub/main/bettertamhub.lua")()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+Tab:AddButton({
+	Name = "solarahub",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/samuraa1/Solara-Hub/refs/heads/main/Solara%20Hub.lua"))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+Tab:AddButton({
+	Name = "gghubv2",
+	Callback = function()
+      		 loadstring(game:HttpGet("https://raw.githubusercontent.com/ScripterRBLX/gg-hub-free/main/GGHubV2", true))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+Tab:AddButton({
+	Name = "script hub v3",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/scripthubekitten/SCRIPTHUBV3/main/SCRIPTHUBV3", true))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+Tab:AddButton({
+	Name = "StrawberryHubBeta1.35",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/CheemsNhuchiAl/Sotringhuhu/main/StrawberryHubBeta1.35"))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+Tab:AddButton({
+	Name = "kick all",
+	Callback = function()
+      		local function createAdminGUI()
+    -- Create ScreenGui
+    local gui = Instance.new("ScreenGui")
+    gui.Name = "AdminGUI"
+    gui.Parent = game.Players.LocalPlayer.PlayerGui
+ 
+    -- Create Frame
+    local frame = Instance.new("Frame")
+    frame.Name = "MainFrame"
+    frame.Size = UDim2.new(0, 200, 0, 300)
+    frame.Position = UDim2.new(0.5, -100, 0.5, -150)
+    frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    frame.BorderSizePixel = 2
+    frame.Parent = gui
+ 
+    -- Create UIListLayout
+    local listLayout = Instance.new("UIListLayout")
+    listLayout.Parent = frame
+    listLayout.Padding = UDim.new(0, 5)
+    listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+ 
+    -- Function to handle kicking a player
+    local function kickPlayer(player)
+        player:Kick("You have been kicked by an admin.")
+    end
+ 
+    -- Loop through all players and create kick buttons for each
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        local kickButton = Instance.new("TextButton")
+        kickButton.Name = player.Name .. "KickButton"
+        kickButton.Text = "Kick " .. player.Name
+        kickButton.Size = UDim2.new(0, 180, 0, 30)
+        kickButton.Parent = frame
+        kickButton.MouseButton1Click:Connect(function()
+            kickPlayer(player)
+        end)
+    end
+ 
+    -- Event to handle when new players join
+    game.Players.PlayerAdded:Connect(function(player)
+        local kickButton = Instance.new("TextButton")
+        kickButton.Name = player.Name .. "KickButton"
+        kickButton.Text = "Kick " .. player.Name
+        kickButton.Size = UDim2.new(0, 180, 0, 30)
+        kickButton.Parent = frame
+        kickButton.MouseButton1Click:Connect(function()
+            kickPlayer(player)
+        end)
+    end)
+ 
+    -- Event to handle when players leave
+    game.Players.PlayerRemoving:Connect(function(player)
+        local kickButton = frame:FindFirstChild(player.Name .. "KickButton")
+        if kickButton then
+            kickButton:Destroy()
+        end
+    end)
+end
+ 
+-- Call the function to create the GUI
+createAdminGUI()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
